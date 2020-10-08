@@ -1,52 +1,31 @@
 import sys
 class Solution:
-    def commonChars(self, A):
-        lens  = len(A)
-
-        A.sort(key=lambda x: len(x))
-
+    def numPairsDivisibleBy60(self, time):
         dicts = {}
-        for i in A[0]:
-            if i not in dicts:
-                dicts[i] = 1
+        res = 0
+        for t in time:
+            temp = t % 60
+            i = 60 - temp
+
+            if i == 60:
+                res += dicts[0]
             else:
-                dicts[i] += 1
+                res += dicts[i]
 
-        c = 0
-        ls = []
-        for k,v in dicts.items():
-            c = v
+            dicts.setdefault( temp, 0)
+            dicts[temp] += 1
 
-            for i in range(1, lens):
-                res = A[i].count(k)
-                c = min(c, res)
-
-                if res <=0:
-                    break
-
-            
-            if c > 0:
-                ls += [k] * c 
-
-        
-        return ls
-                
-
-
-
-
-        
-       
+        return res
 
 if __name__ == "__main__":
     solution = Solution()
-    nums1 = ["cool","lock","cook"]
+    nums1 = [30,20,150,100,40]
     m = 34
 
     nums2 = [1,2,3]    
     n = 3
 
-    result = solution.commonChars(nums1)
+    result = solution.numPairsDivisibleBy60(nums1)
 
     #print(solution.ls)
 
