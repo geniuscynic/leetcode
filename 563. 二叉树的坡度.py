@@ -10,6 +10,11 @@ class TreeNode:
         self.left = left
         self.right = right
 
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+
 class Solution:
     def __init__(self):
         self.ans = 1
@@ -17,49 +22,16 @@ class Solution:
     def helper(self, root: TreeNode):
         if not root:
             return 0
-        
-        left = right = 0
-        if root.left:
-            left = self.helper(root.left) + 1
 
-        if root.right:
-            right = self.helper(root.right) + 1
-
-
-        print(left, right)
-        return max(left, right)
-
-        
-
-   
-
-    def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        if not root:
-            return 0
-
-        left = right = 0
-        if root.left:
-            left = self.helper(root.left) + 1
-        
-        if root.right:
-            right = self.helper(root.right) + 1
-
-        return max(left + right, self.diameterOfBinaryTree(root.left),self.diameterOfBinaryTree(root.right))
-        
-
-    def helper_1(self, root: TreeNode):
-        if not root:
-            return 0
-        
-        left = right = 0
-        
+        #res = 0
         left = self.helper(root.left)
         right = self.helper(root.right)
 
-        self.ans = max(self.ans, left + right + 1)
+        ans += abs(left - right)
 
-
-        return max(left, right) + 1
+        return left + right + root.val
+        
+    def findTilt(self, root: TreeNode) -> int:
 
 
 

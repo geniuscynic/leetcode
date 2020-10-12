@@ -2,22 +2,36 @@ import sys
 from collections import defaultdict
 from collections import Counter
 import re
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
 class Solution:
-    def minDiffInBST(self, root):
-        left = right = sys.maxsize
+    def __init__(self):
+        self.ans = float('inf')
+        self.prev = sys.maxsize
 
+    def helper(self,root):
         if root == None:
-            return sys.maxsize
+            return
 
-        if root.left != None:
-            left = root.val - root.left.val
+        self.helper(root.left)
 
+        if self.prev == sys.maxsize:
+            self.prev = root.val
+        else:
+            self.ans = min(root.val - self.prev, self.ans)
+            self.prev = root.val
 
-        if root.right != None:
-            right = root.right.val - root.val
+        self.helper(root.right)
 
-
-        return min(left, right, self.minDiffInBST(root.left), self.minDiffInBST(root.right))
+    def minDiffInBST(self, root):
+        self.helper(root)
+    
+        return self.ans
     
 
             
