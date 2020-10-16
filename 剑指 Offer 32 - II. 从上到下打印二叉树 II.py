@@ -17,48 +17,53 @@ class Node:
 
 class Solution:
     def __init__(self):
-        self.ans = -1
+        self.ans = 0
+        self.ls = []
 
-    def helper(self, root: TreeNode, ls):
+    def helper(self, root: TreeNode):
         if not root:
-            return None
+            return
 
-        if not root.left and not root.right:
-            ls.append(root.val)
+        self.append([root.val])
 
-        self.helper(root.left, ls)
-        self.helper(root.right, ls)
+        self.helper(self.left)
+
         
-        
-    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
-        ls1 = []
-        ls2 = []
 
-        self.helper(root1, ls1)
-        self.helper(root2, ls2)
-
-        if len(ls1) != len(ls2):
-            return False
-
-        while ls1:
-            if ls1.pop() !=ls2.pop():
-                return
-
-        return True
-
-     def helper_1(self, root: TreeNode):
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
         if not root:
-            return None
+            return []
 
-        if not root.left and not root.right:
-            yield root.val
 
-        yield self.helper(root.left, ls)
-        yield self.helper(root.right, ls)
+        deque1 = deque()
+        deque1.append(root)
 
-       
+        deque2 = deque()
 
- 
+        ls = []
+
+        while deque1:
+            temp =[]
+            while deque1:
+                node = deque1.popleft()
+                temp.append(node.val)
+                deque2.append(node)
+
+            #temp = []
+            ls.append(temp)
+
+            while deque2:
+                node = deque2.popleft()
+                if node.left:
+                    deque1.append(node.left)
+
+                if node.right:
+                    deque1.append(node.right)
+
+        return ls
+
+
+    
 def coverttoTree(t):
     ls =deque(t)
 
@@ -87,12 +92,12 @@ def coverttoTree(t):
 
 if __name__ == "__main__":
     solution = Solution()
-    nums1 = coverttoTree([1,2,3, 4])
-    m = coverttoTree([1,1,3,1,1,3,4,3,1,1,1,3,8,4,8,3,3,1,6,2,1])
+    nums1 = coverttoTree([1,0,1,0,1,0,1])
+    m = coverttoTree([1,2,3,None,4,None,5])
     nums2 = TreeNode(4)  
     n = 3
     
-    result = solution.findSecondMinimumValue(m)
+    result = solution.sumRootToLeaf(nums1)
 
     #print(solution.ls)
 

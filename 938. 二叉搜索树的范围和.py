@@ -17,48 +17,34 @@ class Node:
 
 class Solution:
     def __init__(self):
-        self.ans = -1
+        self.ans = 0
+        self.node = None
 
-    def helper(self, root: TreeNode, ls):
+    def helper(self, root: TreeNode, L, R):
         if not root:
-            return None
+            return
 
-        if not root.left and not root.right:
-            ls.append(root.val)
+        #print(root.val)
 
-        self.helper(root.left, ls)
-        self.helper(root.right, ls)
+        if root.val < L:
+            self.helper(root.right, L, R)
+
+        elif root.val > R:
+            self.helper(root.left, L, R) 
+
+        else:
+            print(root.val)
+            self.ans += root.val 
+            self.helper(root.right, L, R)
+            self.helper(root.left, L, R)
+
         
-        
-    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
-        ls1 = []
-        ls2 = []
+    def rangeSumBST(self, root: TreeNode, L: int, R: int) -> int: 
+        self.helper(root, L, R)
 
-        self.helper(root1, ls1)
-        self.helper(root2, ls2)
+        return self.ans
 
-        if len(ls1) != len(ls2):
-            return False
-
-        while ls1:
-            if ls1.pop() !=ls2.pop():
-                return
-
-        return True
-
-     def helper_1(self, root: TreeNode):
-        if not root:
-            return None
-
-        if not root.left and not root.right:
-            yield root.val
-
-        yield self.helper(root.left, ls)
-        yield self.helper(root.right, ls)
-
-       
-
- 
+    
 def coverttoTree(t):
     ls =deque(t)
 
@@ -88,11 +74,11 @@ def coverttoTree(t):
 if __name__ == "__main__":
     solution = Solution()
     nums1 = coverttoTree([1,2,3, 4])
-    m = coverttoTree([1,1,3,1,1,3,4,3,1,1,1,3,8,4,8,3,3,1,6,2,1])
+    m = coverttoTree([10,5,15,3,7,None,18])
     nums2 = TreeNode(4)  
     n = 3
     
-    result = solution.findSecondMinimumValue(m)
+    result = solution.rangeSumBST(m, 7,15)
 
     #print(solution.ls)
 

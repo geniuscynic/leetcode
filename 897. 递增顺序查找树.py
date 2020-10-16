@@ -18,21 +18,29 @@ class Node:
 class Solution:
     def __init__(self):
         self.ans = -1
+        self.node = None
 
     def helper(self, root: TreeNode):
         if not root:
             return None
 
-       
+        self.helper(root.right)
+
+        if not self.node:
+            self.node = TreeNode(root.val)
+        else:
+            temp = TreeNode(root.val)
+            temp.right = self.node
+
+            self.node = temp
 
         self.helper(root.left)
 
-        root.val
-
-        self.helper(root.right)
-        
         
     def increasingBST(self, root: TreeNode) -> TreeNode:
+        self.helper(root)
+
+        return self.node
 
     
        

@@ -17,48 +17,52 @@ class Node:
 
 class Solution:
     def __init__(self):
-        self.ans = -1
+        self.ans = True
+        self.l1 = None
+        self.l2 = None
 
-    def helper(self, root: TreeNode, ls):
+        self.left = None
+        self.right = None
+
+    def helper(self, root: TreeNode, x: int, y: int, level):
         if not root:
-            return None
+            return
 
-        if not root.left and not root.right:
-            ls.append(root.val)
-
-        self.helper(root.left, ls)
-        self.helper(root.right, ls)
+        level +=1
+        if root.left and (root.left.val == x):
+            self.left = root.val
+            self.l1= level
+        elif root.left and (root.left.val == y):
+            self.right = root.val
+            self.l2 = level
         
-        
-    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
-        ls1 = []
-        ls2 = []
+        if root.right and (root.right.val == x):
+            self.left = root.val
+            self.l1 =level
+        elif root.right and (root.right.val == y):
+            self.right = root.val
+            self.l2 = level
 
-        self.helper(root1, ls1)
-        self.helper(root2, ls2)
+        if self.left != None and self.right != None:
+            return 
 
-        if len(ls1) != len(ls2):
-            return False
 
-        while ls1:
-            if ls1.pop() !=ls2.pop():
-                return
+        self.helper(root.left, x, y, level)
+        self.helper(root.right, x, y, level)
 
-        return True
 
-     def helper_1(self, root: TreeNode):
-        if not root:
-            return None
 
-        if not root.left and not root.right:
-            yield root.val
+    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
+        self.helper(root, x, y, 0)
 
-        yield self.helper(root.left, ls)
-        yield self.helper(root.right, ls)
+        print(self.l1,self.l2 ,self.left,self.right)
+        if self.l1 == self.l2 and self.left !=self.right:
+            return True
 
-       
+        return False
 
- 
+
+    
 def coverttoTree(t):
     ls =deque(t)
 
@@ -88,11 +92,11 @@ def coverttoTree(t):
 if __name__ == "__main__":
     solution = Solution()
     nums1 = coverttoTree([1,2,3, 4])
-    m = coverttoTree([1,1,3,1,1,3,4,3,1,1,1,3,8,4,8,3,3,1,6,2,1])
+    m = coverttoTree([1,2,3,None,4,None,5])
     nums2 = TreeNode(4)  
     n = 3
     
-    result = solution.findSecondMinimumValue(m)
+    result = solution.isCousins(m, 5,4)
 
     #print(solution.ls)
 

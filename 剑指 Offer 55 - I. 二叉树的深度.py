@@ -17,48 +17,43 @@ class Node:
 
 class Solution:
     def __init__(self):
-        self.ans = -1
+        self.ans = 0
+        self.k = 0
 
-    def helper(self, root: TreeNode, ls):
+    def helper(self, root: TreeNode, deth):
         if not root:
-            return None
+            return deth
 
-        if not root.left and not root.right:
-            ls.append(root.val)
+        deth += 1
 
-        self.helper(root.left, ls)
-        self.helper(root.right, ls)
-        
-        
-    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
-        ls1 = []
-        ls2 = []
+        left = self.helper(root.left, deth)
+        right = self.helper(root.right, deth)
 
-        self.helper(root1, ls1)
-        self.helper(root2, ls2)
+        self.ans = max(self.ans, left, right)
 
-        if len(ls1) != len(ls2):
-            return False
+        return deth
 
-        while ls1:
-            if ls1.pop() !=ls2.pop():
-                return
 
-        return True
-
-     def helper_1(self, root: TreeNode):
+    def helper(self, root: TreeNode):
         if not root:
-            return None
+            return 0
 
-        if not root.left and not root.right:
-            yield root.val
+        
+        left = self.helper(root.left)
+        right = self.helper(root.right)
 
-        yield self.helper(root.left, ls)
-        yield self.helper(root.right, ls)
+        return max(left, right) + 1
 
-       
+        
+    def maxDepth(self, root: TreeNode) -> int:
+        self.helper(root, 0)
 
- 
+        return self.ans
+
+
+
+
+    
 def coverttoTree(t):
     ls =deque(t)
 
@@ -87,12 +82,12 @@ def coverttoTree(t):
 
 if __name__ == "__main__":
     solution = Solution()
-    nums1 = coverttoTree([1,2,3, 4])
-    m = coverttoTree([1,1,3,1,1,3,4,3,1,1,1,3,8,4,8,3,3,1,6,2,1])
+    nums1 = coverttoTree([1,0,1,0,1,0,1])
+    m = coverttoTree([1,2,3,None,4,None,5])
     nums2 = TreeNode(4)  
     n = 3
     
-    result = solution.findSecondMinimumValue(m)
+    result = solution.sumRootToLeaf(nums1)
 
     #print(solution.ls)
 

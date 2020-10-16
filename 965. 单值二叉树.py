@@ -17,48 +17,45 @@ class Node:
 
 class Solution:
     def __init__(self):
-        self.ans = -1
+        self.ans = True
+        self.node = None
 
-    def helper(self, root: TreeNode, ls):
+    def helper(self, root: TreeNode):
         if not root:
-            return None
+            return
 
-        if not root.left and not root.right:
-            ls.append(root.val)
+        if root.left:
+            self.helper(root.left)
 
-        self.helper(root.left, ls)
-        self.helper(root.right, ls)
-        
-        
-    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
-        ls1 = []
-        ls2 = []
+        self.helper(root.right)
 
-        self.helper(root1, ls1)
-        self.helper(root2, ls2)
+        return root.val
 
-        if len(ls1) != len(ls2):
-            return False
+    def isUnivalTree(self, root: TreeNode) -> bool:
 
-        while ls1:
-            if ls1.pop() !=ls2.pop():
-                return
+        if not root:
+            return True
+
+        deque = deque()
+        deque.append(root)
+
+        val = root.val
+        while deque:
+            node = deque.popleft()
+
+            if val != node.val:
+                return False
+
+            if node.left:
+                deque.append(node.left)
+
+            if node.right:
+                deque.append(node.right)
 
         return True
 
-     def helper_1(self, root: TreeNode):
-        if not root:
-            return None
 
-        if not root.left and not root.right:
-            yield root.val
-
-        yield self.helper(root.left, ls)
-        yield self.helper(root.right, ls)
-
-       
-
- 
+    
 def coverttoTree(t):
     ls =deque(t)
 
@@ -88,11 +85,11 @@ def coverttoTree(t):
 if __name__ == "__main__":
     solution = Solution()
     nums1 = coverttoTree([1,2,3, 4])
-    m = coverttoTree([1,1,3,1,1,3,4,3,1,1,1,3,8,4,8,3,3,1,6,2,1])
+    m = coverttoTree([10,5,15,3,7,None,18])
     nums2 = TreeNode(4)  
     n = 3
     
-    result = solution.findSecondMinimumValue(m)
+    result = solution.rangeSumBST(m, 7,15)
 
     #print(solution.ls)
 
