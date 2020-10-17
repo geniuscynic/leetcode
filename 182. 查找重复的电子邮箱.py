@@ -2,6 +2,9 @@ import sys
 from collections import defaultdict
 from collections import Counter
 
+select p.email from Person p
+group by p.email
+having count(1) > 1
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val

@@ -2,6 +2,10 @@ import sys
 from collections import defaultdict
 from collections import Counter
 
+select p.FirstName, p.LastName, ad.City, ad.State from Person p
+left join Address ad
+on p.PersonId = ad.PersonId    
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val

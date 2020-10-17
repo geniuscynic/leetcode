@@ -2,6 +2,10 @@ import sys
 from collections import defaultdict
 from collections import Counter
 
+select Customers  from Customers  c
+where not exists (select 1 from Orders o where c.id = o.CustomerId  )
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val

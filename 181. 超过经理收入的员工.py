@@ -2,6 +2,12 @@ import sys
 from collections import defaultdict
 from collections import Counter
 
+select e1.Name as Employee 
+ from Employee e1
+join Employee e2
+ on  e1.ManagerId = e2.Id 
+ and e1.Salary > e2.Salary
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val

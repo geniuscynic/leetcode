@@ -2,6 +2,13 @@ import sys
 from collections import defaultdict
 from collections import Counter
 
+select IFNULL(
+(select Salary 
+from Employee 
+group by Salary 
+order by Salary desc
+LIMIT 1 OFFSET 1), NULL) as SecondHighestSalary
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
