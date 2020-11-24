@@ -22,11 +22,9 @@ class Solution:
 
     def allCellsDistOrder_1(self, R: int, C: int, r0: int, c0: int):
         res = []
-        visit = [] # [[0, 0] for _ in range(R) for _ in range(C)]
-        for i in range(R):
-            for j in range(C):
-                visit.append([0, 0])
-        print(visit)
+        visit = [[0] * C for _ in range(R)]# [[0, 0] for _ in range(R) for _ in range(C)]
+       
+        #print(visit)
         queue = deque()
 
         queue.append([r0, c0])
@@ -34,7 +32,7 @@ class Solution:
         lens = R * C
         i = 0
         while i < lens and queue:
-            print(queue)
+            #print(queue)
 
             point = queue.popleft()
             
@@ -47,9 +45,10 @@ class Solution:
             if tc < 0 or tc >= C:
                 continue
             
-            print(point)
+            #print(point, visit[tr][tc], visit)
             if visit[tr][tc] == 0:
                 res.append(point)
+                #print(res)
                 visit[tr][tc] = 1
 
                 
@@ -72,10 +71,10 @@ class Solution:
 if __name__ == "__main__":
     solution = Solution()
     nums1 = 2
-    m = 3
+    m = 2
 
-    nums2 = 1
-    n = 2
+    nums2 = 0
+    n = 1
 
     result = solution.allCellsDistOrder_1(nums1, m, nums2, n)
 
