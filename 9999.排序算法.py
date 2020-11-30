@@ -69,14 +69,24 @@ class Solution:
     def insertionSort(self, alist):
         lens = len(alist)
         
-        for i in range(1, lens):
-            
-            for j in range(i, lens):
-                if(alist[j] < alist[minindex]):
-                    minindex = j
+        print(alist)
 
-            alist[i], alist[minindex] = alist[minindex],alist[i]
-        
+        for i in range(lens-1):
+            current = alist[i + 1]
+            preIndex = i
+            for j in reversed(range(i)):
+                preIndex -= 1
+
+                if current < alist[j]:
+                    alist[j + 1] = alist[j]
+                else:
+                    break
+
+            #if(preIndex != i - 1):
+            alist[preIndex + 1] = current
+            print(alist)
+
+
         return alist
 
    
@@ -110,19 +120,19 @@ def testSelectionSort():
     print('选择排序算法：', t2.timeit(1000))
 
 def testInsertionSort():
-    solution.testSort(solution.selectionSort, arrlist1[:])
-    solution.testSort(solution.selectionSort, arrlist2[:])
+    solution.testSort(solution.insertionSort, [10, 6,9, 8,7 ])
+    #solution.testSort(solution.insertionSort, arrlist2[:])
 
-    t1 = timeit.Timer('solution.selectionSort(arrlist1[:])', 'from __main__ import solution, arrlist1')
-    print('选择排序算法：', t1.timeit(1000))
+    #t1 = timeit.Timer('solution.insertionSort(arrlist1[:])', 'from __main__ import solution, arrlist1')
+    #print('选择排序算法：', t1.timeit(1000))
 
-    t2 = timeit.Timer('solution.selectionSort(arrlist2[:])', 'from __main__ import solution, arrlist2')
-    print('选择排序算法：', t2.timeit(1000))
+    #t2 = timeit.Timer('solution.insertionSort(arrlist2[:])', 'from __main__ import solution, arrlist2')
+    #print('选择排序算法：', t2.timeit(1000))
 
 
 if __name__ == "__main__":
     solution = Solution()
-    nums1 = 100
+    nums1 = 10
     mins = 1
     maxs = 100
     swapTimes = 10
@@ -135,6 +145,7 @@ if __name__ == "__main__":
 
     #testBubbleSort()
     #testSelectionSort()
+    testInsertionSort()
 
 
     #print(arrlist1)
