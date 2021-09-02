@@ -6,4 +6,13 @@ public abstract class ILeetCode {
     protected void print(int i) {
         System.out.println(i);
     }
+
+    protected void print(int[] nums) {
+        for (int num:nums) {
+            System.out.print(num);
+            System.out.print(", ");
+        }
+
+        System.out.println();
+    }
 }

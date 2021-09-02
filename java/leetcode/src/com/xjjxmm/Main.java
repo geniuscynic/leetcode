@@ -1,13 +1,11 @@
 package com.xjjxmm;
 
-import com.xjjxmm.leetcode.FirstBadVersion278;
-import com.xjjxmm.leetcode.ILeetCode;
-import com.xjjxmm.leetcode.SearchInsertPosition35;
+import com.xjjxmm.leetcode.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        ILeetCode leetCode = new SearchInsertPosition35();
+        ILeetCode leetCode = new MoveZeroes283();
 
         leetCode.run();
     }

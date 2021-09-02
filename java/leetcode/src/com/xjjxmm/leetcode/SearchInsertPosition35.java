@@ -22,6 +22,10 @@ public class SearchInsertPosition35 extends ILeetCode{
             }
         }
 
+        if(nums[right]< target) {
+            right ++;
+        }
+
         return right;
 
     }
