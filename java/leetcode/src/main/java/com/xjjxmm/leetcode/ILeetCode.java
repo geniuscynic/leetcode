@@ -18,6 +18,14 @@ public abstract class ILeetCode {
         System.out.println();
     }
 
+    protected void print(int[][] nums) {
+        for (int[] num:nums) {
+            print(num);
+        }
+
+        System.out.println();
+    }
+
     protected void print(String i) {
         System.out.println(i);
     }
