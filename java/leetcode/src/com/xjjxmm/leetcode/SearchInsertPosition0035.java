@@ -1,6 +1,6 @@
 package com.xjjxmm.leetcode;
 
-public class SearchInsertPosition35 extends ILeetCode{
+public class SearchInsertPosition0035 extends ILeetCode{
 
     public int searchInsert(int[] nums, int target) {
         int left = 0;

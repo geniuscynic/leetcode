@@ -1,8 +1,8 @@
-package leetcode;
+package com.xjjxmm.leetcode;
 
 import com.xjjxmm.leetcode.ILeetCode;
 
-public class BinarySearch704 extends ILeetCode {
+public class BinarySearch0704 extends ILeetCode {
     public int search(int[] nums, int target) {
         int leth = nums.length;
 

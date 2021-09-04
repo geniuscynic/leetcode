@@ -1,6 +1,6 @@
 package com.xjjxmm.leetcode;
 
-public class RotateArray189 extends ILeetCode {
+public class RotateArray0189 extends ILeetCode {
     public void rotate(int[] nums, int k) {
         k = k % nums.length;
 

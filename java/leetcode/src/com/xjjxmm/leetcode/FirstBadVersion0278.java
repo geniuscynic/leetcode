@@ -1,6 +1,6 @@
 package com.xjjxmm.leetcode;
 
-public class FirstBadVersion278 extends ILeetCode {
+public class FirstBadVersion0278 extends ILeetCode {
 
     boolean isBadVersion(int version) {
         return version >= 1702766719;

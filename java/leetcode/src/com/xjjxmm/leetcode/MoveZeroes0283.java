@@ -1,6 +1,6 @@
 package com.xjjxmm.leetcode;
 
-public class MoveZeroes283 extends ILeetCode {
+public class MoveZeroes0283 extends ILeetCode {
     public void moveZeroes(int[] nums) {
         int left = 0, right = 0;
 

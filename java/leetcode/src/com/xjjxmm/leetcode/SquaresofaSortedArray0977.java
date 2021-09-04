@@ -1,6 +1,6 @@
 package com.xjjxmm.leetcode;
 
-public class SquaresofaSortedArray977 extends ILeetCode{
+public class SquaresofaSortedArray0977 extends ILeetCode{
 
     public int[] sortedSquares(int[] nums) {
         int left =0;
