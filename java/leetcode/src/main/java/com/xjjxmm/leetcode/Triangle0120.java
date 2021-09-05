@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Triangle0120 extends ILeetCode {
     public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
-
+        return 0;
     }
 
     @Override
