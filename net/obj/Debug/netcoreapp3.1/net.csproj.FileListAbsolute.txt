@@ -1,0 +1,13 @@
+D:\workplace\git\study\python\leetcode\net\bin\Debug\netcoreapp3.1\net.exe
+D:\workplace\git\study\python\leetcode\net\bin\Debug\netcoreapp3.1\net.deps.json
+D:\workplace\git\study\python\leetcode\net\bin\Debug\netcoreapp3.1\net.runtimeconfig.json
+D:\workplace\git\study\python\leetcode\net\bin\Debug\netcoreapp3.1\net.runtimeconfig.dev.json
+D:\workplace\git\study\python\leetcode\net\bin\Debug\netcoreapp3.1\net.dll
+D:\workplace\git\study\python\leetcode\net\bin\Debug\netcoreapp3.1\net.pdb
+D:\workplace\git\study\python\leetcode\net\obj\Debug\netcoreapp3.1\net.csprojAssemblyReference.cache
+D:\workplace\git\study\python\leetcode\net\obj\Debug\netcoreapp3.1\net.AssemblyInfoInputs.cache
+D:\workplace\git\study\python\leetcode\net\obj\Debug\netcoreapp3.1\net.AssemblyInfo.cs
+D:\workplace\git\study\python\leetcode\net\obj\Debug\netcoreapp3.1\net.csproj.CoreCompileInputs.cache
+D:\workplace\git\study\python\leetcode\net\obj\Debug\netcoreapp3.1\net.dll
+D:\workplace\git\study\python\leetcode\net\obj\Debug\netcoreapp3.1\net.pdb
+D:\workplace\git\study\python\leetcode\net\obj\Debug\netcoreapp3.1\net.genruntimeconfig.cache
