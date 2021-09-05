@@ -130,6 +130,10 @@ dmypy.json
 
 .idea/
 .vscode
+.vscode/
 .vs
+.vs/
 bin
+bin/
 obj
+obj/
