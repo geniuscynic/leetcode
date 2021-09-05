@@ -5,7 +5,7 @@ import com.xjjxmm.leetcode.*;
 public class Main {
 
     public static void main(String[] args) {
-        ILeetCode leetCode = new PopulatingNextRightPointersinEachNode0116();
+        ILeetCode leetCode = new HouseRobber0198();
 
         leetCode.run();
     }
