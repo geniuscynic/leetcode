@@ -5,7 +5,7 @@ import com.xjjxmm.leetcode.*;
 public class Main {
 
     public static void main(String[] args) {
-        ILeetCode leetCode = new CountingBits0338();
+        ILeetCode leetCode = new MinCostClimbingStairs0746();
 
         leetCode.run();
     }

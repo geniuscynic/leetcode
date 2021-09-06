@@ -5,6 +5,10 @@ import java.util.List;
 public abstract class ILeetCode {
     public abstract void run();
 
+    protected void print(Boolean i) {
+        System.out.println(i);
+    }
+
     protected void print(int i) {
         System.out.println(i);
     }
